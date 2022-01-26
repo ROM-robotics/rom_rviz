@@ -1,6 +1,8 @@
 <launch>
     <node type="rviz" name="rviz" pkg="rviz" args="-d $(find rom_rviz)/rviz/romrobotics.rviz" />
 
-    <node name="rom_marker" pkg="rom_rviz" type="osrfm" output="screen"/>
+    <node name="rom_marker" pkg="rom_rviz" type="osrfm" output="screen">
+        <param name="brakecount" type="int" value="10000000"/>
+    </node>
 
 </launch>

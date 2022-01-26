@@ -5,6 +5,7 @@
 #include <stdio.h>  
 #include <rom_rviz/SimpleFloatSrvMsg.h> //a custom message type defined in this package
 using namespace std;
+int break_count = 30;
 
 void init_marker_vals(visualization_msgs::Marker &marker) {
     marker.header.frame_id = "map"; // reference frame for marker coords
@@ -52,6 +53,7 @@ int main(int argc, char **argv) {
     visualization_msgs::Marker g_marker;
     visualization_msgs::Marker b_marker;
     double iteration = 0.0;
+    ros::param::get("/rom_marker/brakecount", break_count);
 
     visualization_msgs::Marker rom_robotics;
     rom_robotics.header.frame_id = "map";
@@ -123,7 +125,7 @@ int main(int argc, char **argv) {
     double z_min = 8.0;
     double z_max = 10.0;
 
-    int break_count = 30;
+    
     while (ros::ok()) 
     {
             ros::Time current_time= ros::Time::now();
